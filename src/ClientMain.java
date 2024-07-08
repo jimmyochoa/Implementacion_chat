@@ -1,28 +1,16 @@
-import java.lang.ModuleLayer.Controller;
-import java.util.Scanner;
+import controllers.ClientController;
+import models.ClientModel;
+import views.ClientView;
 
-import Controller.NodeController;
-import Models.Node;
-import Views.NodeView;
-
-// ClientMain.java
 public class ClientMain {
     public static void main(String[] args) {
-        Node clientNode = new Node("127.0.0.1", 50);
-        NodeView view = new NodeView();
-        NodeController controller = new NodeController(clientNode, view);
+        ClientView view = new ClientView();
+        ClientModel model = new ClientModel();
+        ClientController controller = new ClientController(view, model);
 
-        Scanner input = new Scanner(System.in);
+        String serverIP = "localhost"; // Replace with server IP
+        int serverPort = 12345; // Replace with server port
 
-        try {
-            while (true) {
-                String userInput = input.nextLine();
-                controller.setNodeMessage(userInput);
-                controller.updateView();
-                controller.sendMessage();
-            }
-        } finally {
-            input.close();
-        }
+        controller.startClient(serverIP, serverPort);
     }
 }
