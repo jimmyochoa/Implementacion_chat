@@ -1,14 +1,14 @@
-import Controller.NodeController;
-import Models.Node;
-import Views.NodeView;
+import controllers.ServerController;
+import models.ServerModel;
+import views.ServerView;
 
-// ServerMain.java
 public class ServerMain {
     public static void main(String[] args) {
-        Node serverNode = new Node("127.0.0.1", 50);
-        NodeView view = new NodeView();
-        NodeController controller = new NodeController(serverNode, view);
+        ServerView view = new ServerView();
+        ServerModel model = new ServerModel();
+        ServerController controller = new ServerController(view, model);
 
-        controller.startServer();
+        int port = 12345; // Port number to run the server
+        controller.startServer(port);
     }
 }
