@@ -1,2 +1,1 @@
-# minigame_app
-DISCRETOS POR LA EDUCACION
+# Implementacion de chat con TCP
